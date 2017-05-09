@@ -1,0 +1,32 @@
+SELECT url,image_url,title,location_country,location_region,location_name,location_type,location,sub_title,video_url,category,category_slug,currency,currency_symbol,funding_goal,currently_raised,usd_currently_raised,state,rewards,end_date,launch_date,num_supporters,creator,num_updates,num_comments,campaign_state,story,num_fb_shares
+FROM training_data
+WHERE url IS NOT NULL
+AND image_url IS NOT NULL
+AND title IS NOT NULL
+AND location_country IS NOT NULL
+AND location_region IS NOT NULL
+AND location_name IS NOT NULL
+AND location_type IS NOT NULL
+AND location IS NOT NULL
+AND sub_title IS NOT NULL
+AND video_url IS NOT NULL
+AND category IS NOT NULL
+AND category_slug IS NOT NULL
+AND currency IS NOT NULL
+AND currency_symbol IS NOT NULL
+AND funding_goal IS NOT NULL
+AND currently_raised IS NOT NULL
+AND usd_currently_raised IS NOT NULL
+AND state IS NOT NULL
+AND rewards IS NOT NULL
+AND end_date IS NOT NULL
+AND launch_date IS NOT NULL
+AND num_supporters IS NOT NULL
+AND creator IS NOT NULL
+AND num_updates IS NOT NULL
+AND num_comments IS NOT NULL
+AND campaign_state IS NOT NULL
+AND story IS NOT NULL
+AND num_fb_shares IS NOT NULL
+ORDER BY launch_date DESC
+LIMIT 20;
