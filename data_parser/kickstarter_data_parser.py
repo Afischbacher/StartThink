@@ -1198,7 +1198,7 @@ baseline_of_num_comments = 998
 baseline_of_fb_shares = 235648
 baseline_of_campaign_duration = 2717949
 
-with open("test.csv", "r")as rfh, open("new_data.csv", "w") as wfh:
+with open("test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
     reader = csv.reader(rfh, delimiter=",")
     writer = csv.writer(wfh, quoting=csv.QUOTE_NONE, escapechar=" ")
 
@@ -1333,6 +1333,7 @@ with open("test.csv", "r")as rfh, open("new_data.csv", "w") as wfh:
         category_slug = ()
         currency = ()
         funding_goal = ()
+        duration_of_campaign = ()
         campaign_state = ()
         num_supporters = ()
         num_updates = ()
