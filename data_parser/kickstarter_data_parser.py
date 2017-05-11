@@ -1,4 +1,5 @@
 """
+REMOVE COUNTRY / CITY AND ONLY INCLUDE SLUG AND LOCATION TYPE
 The query that must be executed and CSV dumped to be parsed through with this file
 
 SELECT url,image_url,length(title),location_country,location_region,
@@ -6,9 +7,9 @@ location_type,length(sub_title),video_url,category,category_slug,currency,
 funding_goal,state,end_date,launch_date,num_supporters,
 num_updates,num_comments,length(story),num_fb_shares
 FROM training_data
-WHERE state != "live" AND state = "successful" OR state = "failed"
+WHERE state = "successful" OR state = "failed"
 ORDER BY launch_date DESC
-LIMIT 20;
+LIMIT 20000;
 
 ** Continuous Dummy Variables **
 - sentiment_of_description (real value between 0 and 1) -5 5
@@ -54,7 +55,10 @@ Baseline for 1 with Duration of Campaign = 2717949 // 31.45774 Days
 """
 import time
 import datetime
+import timeit
 import csv
+
+time_start = time.time()
 
 category_dict = {
     'Horror': 0,
@@ -1201,7 +1205,7 @@ baseline_of_campaign_duration = 2717949
 with open("test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
     reader = csv.reader(rfh, delimiter=",")
     writer = csv.writer(wfh, quoting=csv.QUOTE_NONE, escapechar=" ")
-
+    #next(reader, None) #skips the headers of the CSV
     for cols in reader:
 
         url = ()
@@ -1312,6 +1316,19 @@ with open("test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", 
         if int(cols[19]) >= 0:
             num_fb_shares = (int(cols[19]) / baseline_of_fb_shares)
 
+            """"
+
+            SELECT url,image_url,length(title),location_country,location_region,
+            location_type,length(sub_title),video_url,category,category_slug,currency,
+            funding_goal,state,end_date,launch_date,num_supporters,
+            num_updates,num_comments,length(story),num_fb_shares
+            FROM training_data
+            WHERE state != "live" AND state = "successful" OR state = "failed"
+            ORDER BY launch_date DESC
+            LIMIT 20000;
+
+            """
+
         writer.writerow(
             [str(url) + "," + str(image_url) + "," + str(title) + ','.join(map(str, location_code)) + ','.join(
                 map(str, location_region)) + ','.join(map(str, location_type)) + ',' + str(sub_title) + ',' + str(
@@ -1358,3 +1375,6 @@ with open("test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", 
 
         for k in currency_dict:
             currency_dict[k] = 0
+
+time_end = time.time()
+print("Processing Time {0}".format(time_end - time_start))
