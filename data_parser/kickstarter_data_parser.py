@@ -1200,7 +1200,7 @@ baseline_of_campaign_duration = 2717949
 
 with open("test.csv", "r")as rfh, open("new_data.csv", "w") as wfh:
     reader = csv.reader(rfh, delimiter=",")
-    writer = csv.writer(wfh)
+    writer = csv.writer(wfh, quoting=csv.QUOTE_NONE, escapechar=" ")
 
     for cols in reader:
 
@@ -1312,23 +1312,14 @@ with open("test.csv", "r")as rfh, open("new_data.csv", "w") as wfh:
         if int(cols[19]) >= 0:
             num_fb_shares = (int(cols[19]) / baseline_of_fb_shares)
 
-        data_row = str(url) + "," + str(image_url) + "," + str(title) + ','.join(map(str, location_code)) + ','.join(
-            map(str, location_region)) + ','.join(map(str, location_type)) + ',' + str(sub_title) + ',' + str(
-            video_url) + ','.join(map(str, category)) + ','.join(map(str, category_slug)) + ','.join(
-            map(str, currency)) + "," + str(funding_goal) + "," + str(duration_of_campaign) + "," + str(
-            campaign_state) + "," + str(num_supporters) + "," +str(num_updates) + "," + str(num_comments) + "," + str(
-            length_story) + "," + str(num_fb_shares)
-
-        alt_data_row = str(url) + str(image_url) + str(title) + ''.join(map(str, location_code)) + ''.join(
-            map(str, location_region)) + ''.join(map(str, location_type)) + '' + str(sub_title) + '' + str(
-            video_url) + ''.join(map(str, category)) + ''.join(map(str, category_slug)) + ''.join(
-            map(str, currency)) + str(funding_goal) + str(duration_of_campaign) + str(
-            campaign_state) + str(num_supporters) + str(num_updates) + str(num_comments) + str(
-            length_story) + str(num_fb_shares)
-
-        print(data_row)
-
-        writer.writerow(alt_data_row)
+        writer.writerow(
+            [str(url) + "," + str(image_url) + "," + str(title) + ','.join(map(str, location_code)) + ','.join(
+                map(str, location_region)) + ','.join(map(str, location_type)) + ',' + str(sub_title) + ',' + str(
+                video_url) + ','.join(map(str, category)) + ','.join(map(str, category_slug)) + ','.join(
+                map(str, currency)) + "," + str(funding_goal) + "," + str(duration_of_campaign) + "," + str(
+                campaign_state) + "," + str(num_supporters) + "," + str(num_updates) + "," + str(
+                num_comments) + "," + str(length_story) + "," + str(num_fb_shares)]
+        )
 
         url = ()
         image_url = ()
@@ -1349,4 +1340,20 @@ with open("test.csv", "r")as rfh, open("new_data.csv", "w") as wfh:
         length_story = ()
         num_fb_shares = ()
 
-        break
+        for k in category_dict:
+            category_dict[k] = 0
+
+        for k in location_region_dict:
+            location_region_dict[k] = 0
+
+        for k in location_type_dict:
+            location_type_dict[k] = 0
+
+        for k in location_code_dict:
+            location_code_dict[k] = 0
+
+        for k in category_slug_dict:
+            category_slug_dict[k] = 0
+
+        for k in currency_dict:
+            currency_dict[k] = 0
