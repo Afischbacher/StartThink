@@ -5471,7 +5471,7 @@ baseline_of_num_comments = 998
 baseline_of_fb_shares = 235648
 baseline_of_campaign_duration = 2717949
 
-with open("test_data.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
+with open("kickstarter_data.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
     reader = csv.reader(rfh, delimiter=",")
     writer = csv.writer(wfh, quoting=csv.QUOTE_NONE, escapechar=" ")
     next(reader, None)  # skips the headers of the CSV
@@ -5508,7 +5508,9 @@ with open("test_data.csv", "r")as rfh, open("machine_learning_data_kickstarter.c
 
         if len(cols[2]) > 0 and cols[2] != "NULL":
             title = (int(cols[2]) / int(baseline_title))
-
+        else:
+            title = 0
+            
         for k in location_slug_dict:
             if k == cols[3]:
                 location_slug_dict[cols[3]] = 1
@@ -5563,21 +5565,30 @@ with open("test_data.csv", "r")as rfh, open("machine_learning_data_kickstarter.c
             end_time = time.mktime(datetime.datetime.strptime(str(cols[12]), "%Y-%m-%d %H:%M:%S").timetuple())
             duration_of_campaign = (int(end_time - start_time) / int(baseline_of_campaign_duration))
 
-        if int(cols[14]) >= 0 and cols[14] != "NULL":
+        if int(cols[14]) > 0 and cols[14] != "NULL":
             num_supporters = (int(cols[14]) / baseline_of_num_supporters)
+        else:
+            num_supporters = 0
 
         if int(cols[15]) >= 0 and cols[15] != "NULL":
             num_updates = (int(cols[15]) / baseline_of_num_updates)
+        else:
+            num_updates = 0
 
-        if int(cols[16]) >= 0 and cols[16] != "NULL":
+        if int(cols[16]) > 0 and cols[16] != "NULL":
             num_comments = (int(cols[16]) / baseline_of_num_comments)
+        else:
+            num_comments = 0
 
         if len(cols[17]) > 0 and cols[17] != "NULL":
             length_story = (len(cols[17]) / baseline_of_story)
+        else:
+            length_story = 0
 
         if int(cols[18]) >= 0 and cols[18] != "NULL":
             num_fb_shares = (int(cols[18]) / baseline_of_fb_shares)
-
+        else:
+            num_fb_shares = 0
             """"
             SELECT url,image_url,length(title),location_slug,
             location_type,length(sub_title),video_url,category,category_slug,currency,
