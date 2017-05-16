@@ -3,3 +3,6 @@ data_parser/new_data.csv
 data_parser/machine_learning_data_kickstarter.csv
 data_parser/test_data.csv
 data_parser/kickstarter_data.csv
+data_parser/structured_data.csv
+data_parser/test-diabetes-data.csv
+data_parser/data_test.csv
