@@ -1,39 +1,35 @@
 """
 data_parser query
-SELECT url,image_url,length(title),location_country,
-location_type,length(sub_title),video_url,category,category_slug,currency,
-funding_goal,state,end_date,launch_date,num_supporters,
-num_updates,num_comments,length(story),num_fb_shares,story,title,sub_title
+
+SELECT url,
+image_url,
+length(title),
+location_country,
+location_type,
+length(sub_title),
+video_url,
+category,
+category_slug,
+currency,
+funding_goal,
+state,
+end_date,
+launch_date,
+num_supporters,
+num_updates,
+num_comments,
+length(story),
+num_fb_shares,
+REPLACE(REPLACE(REPLACE(story,'\n',''), '\t',''),';',''),
+REPLACE(REPLACE(REPLACE(title,'\n',''), '\t',''),';',''),
+REPLACE(REPLACE(REPLACE(sub_title,'\n',''), '\t',''),';',''),
+REPLACE(REPLACE(rewards, "\\", "\'"),";", ''),
+usd_currently_raised
 FROM training_data
 WHERE state = "successful" OR state = "failed"
 ORDER BY launch_date DESC
 LIMIT 23200;
 
-json_parser query
-SELECT rewards
-FROM training_data
-WHERE state = "successful" OR state = "failed"
-ORDER BY launch_date DESC
-LIMIT 23200;
-
-** Continuous Dummy Variables **
-- sentiment_of_description (real value between 0 and 1) -5 5
-- length_of_description (real value between 0 and 1)
-- duration_of_campaign (real values between 0 and 1)
-- num_supporters (real values between 0 and 1)
-- num_updates (real values between 0 and 1)
-- num_comments (real values between 0 and 1)
-- num_fb_shares (real values between 0 and 1)
-
-** Discrete Variables **
-- size_of_funding_goal (real values between 0 and 1)
-- sentiment_of_description (real value between 0 and 1)
-- length_of_description (real value between 0 and 1)
-- duration_of_campaign (real values between 0 and 1)
-- num_supporters (real values between 0 and 1)
-- num_updates (real values between 0 and 1)
-- num_comments (real values between 0 and 1)
-- num_fb_shares (real values between 0 and 1)
 
 - length of title : 79 (That is our baseline for 1)
 - length of sub_title : 249 (That is our baseline for 1)
@@ -44,19 +40,19 @@ times 2 standard deviations to the left)
 - size of num_updates: 93 (That is our baseline for 1)
 - size of num_comments: 998 (That is our baseline for 1)
 - size of nun_fb_shares: 235648 (That is our baseline for 1)
-
-
-SQL Query to determine Campaign Duration Time
-
-SELECT max(unix_timestamp(end_date)) - max(unix_timestamp(launch_date))
-FROM training_data
+- size of currently_raised_max value = SQL statement dump
 
 MAX LAUNCH DATE UNIX TIME = 1493817026
 MAX END DATE UNIX TIME = 1496534975
 
 Baseline for 1 with Duration of Campaign = 2717949 // 31.45774 Days
 
+Input Layer (Last 4 nodes)
 
+-	US_Currently_Raised
+-	State of Success / Failure
+-	FB Shares
+-	# of Supporters
 
 """
 import time
@@ -66,15 +62,6 @@ import json
 from textblob import TextBlob
 
 time_start = time.time()
-
-
-def structure_csv():
-    with open("data_test.csv", "r") as r, open("structured_data.csv", "w+") as f:
-        reader = csv.reader(r, delimiter=",")
-        writer = csv.writer(f, delimiter=",", quoting=csv.QUOTE_NONE, escapechar=" ")
-        next(reader, None)  # skips the headers of the CSV
-        non_blank = (line for line in r if line.strip())
-        writer.writerow(non_blank)
 
 
 def data_parser():
@@ -598,12 +585,12 @@ def data_parser():
     baseline_of_num_comments = 998
     baseline_of_fb_shares = 235648
     baseline_of_campaign_duration = 2717949
+    baseline_of_currently_raised = 0
 
-    with open("structured_data.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
-        reader = csv.reader(rfh, delimiter=",", quotechar='"')
-        writer = csv.writer(wfh, quoting=csv.QUOTE_NONE, escapechar=" ")
-
-        
+    with open("data_test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
+        reader = csv.reader(rfh, delimiter=";", quotechar='"')
+        writer = csv.writer(wfh, delimiter=";", quoting=csv.QUOTE_NONE, escapechar=" ")
+        next(reader, None)
         for cols in reader:
 
             url = ()
@@ -617,6 +604,7 @@ def data_parser():
             category_slug = ()
             currency = ()
             funding_goal = ()
+            currently_raised = ()
             campaign_state = ()
             num_supporters = ()
             duration_of_campaign = ()
@@ -695,13 +683,13 @@ def data_parser():
 
             if cols[12] != "" and cols[13] != "" and cols[12] != "NULL" and cols[13] != "NULL":
                 start_time = time.mktime(
-                    datetime.datetime.strptime(str(cols[13]), ' "%Y-%m-%d  %H:%M:%S " ').timetuple())
-                end_time = time.mktime(datetime.datetime.strptime(str(cols[12]), ' "%Y-%m-%d  %H:%M:%S " ').timetuple())
+                    datetime.datetime.strptime(str(cols[13]), '%Y-%m-%d  %H:%M:%S').timetuple())
+                end_time = time.mktime(datetime.datetime.strptime(str(cols[12]), '%Y-%m-%d  %H:%M:%S').timetuple())
 
                 duration_of_campaign = (int(end_time - start_time) / int(baseline_of_campaign_duration))
 
             if int(cols[14]) > 0 and cols[14] != "NULL":
-                num_supporters = (int(cols[14]) / baseline_of_num_supporters)
+                num_supporters = (int(cols[14]))
             else:
                 num_supporters = 0
 
@@ -738,10 +726,15 @@ def data_parser():
                 title_sentiment = 0
 
             if len(cols[21]) > 0:
-                sub_title_sentiment = TextBlob(str(cols[20]))
+                sub_title_sentiment = TextBlob(str(cols[21]))
 
             else:
                 sub_title_sentiment = 0
+
+            if len(cols[22]) > 0:
+                print(str(cols[22]))
+            else:
+                num_of_rewards = 0
 
             data_row = [
                 str(url) + "," + str(image_url) + "," + str(title) + ','.join(map(str, location_country)) + ','.join(
@@ -762,8 +755,9 @@ def data_parser():
                         map(str, currency)) + "," + str(funding_goal) + ',' + str(duration_of_campaign) + "," + str(
                         num_supporters) + "," + str(num_updates) + "," + str(num_comments) + "," + str(
                         length_story) + "," + str(num_fb_shares) + "," + str(story_sentiment.subjectivity) + "," + str(
-                        title_sentiment.subjectivity) + "," + str(sub_title_sentiment.subjectivity) + "," + str(
-                        campaign_state)]
+                        title_sentiment.subjectivity) + "," + str(sub_title_sentiment.subjectivity) + "," + str(((story_sentiment.polarity + 1)/2)) + "," +
+                    str(((title_sentiment.polarity + 1)/ 2)) + "," + str(((sub_title_sentiment.polarity + 1) / 2)) + "," + str(
+                        campaign_state) ]
 
             )
 
@@ -788,7 +782,7 @@ def data_parser():
             story_sentiment = 0
             title_sentiment = 0
             sub_title_sentiment = 0
-
+            num_of_rewards = 0
             for k in category_dict:
                 category_dict[k] = 0
 
@@ -810,11 +804,11 @@ def json_parser():
         reader = csv.reader(rf, delimiter=",")
         writer = csv.writer(wf, quoting=csv.QUOTE_NONE, escapechar=" ")
         next(reader, None)
-        # use the writer.write function to append to each row
 
 
-structure_csv()
 data_parser()
+
 time_end = time.time()
 print("Done")
 print("Processing Time {0}".format(time_end - time_start))
+print()
