@@ -1,6 +1,7 @@
 """
 data_parser query
 
+use crowdfund;
 SELECT url,
 image_url,
 length(title),
@@ -23,7 +24,7 @@ num_fb_shares,
 REPLACE(REPLACE(REPLACE(story,'\n',''), '\t',''),';',''),
 REPLACE(REPLACE(REPLACE(title,'\n',''), '\t',''),';',''),
 REPLACE(REPLACE(REPLACE(sub_title,'\n',''), '\t',''),';',''),
-REPLACE(REPLACE(rewards, "\\", "\'"),";", ''),
+REPLACE(rewards,";", ""),
 usd_currently_raised
 FROM training_data
 WHERE state = "successful" OR state = "failed"
@@ -585,7 +586,9 @@ def data_parser():
     baseline_of_num_comments = 998
     baseline_of_fb_shares = 235648
     baseline_of_campaign_duration = 2717949
-    baseline_of_currently_raised = 0
+    baseline_of_currently_raised = 12393140
+    baseline_of_max_rewards = 200000
+    baseline_of_max_num_rewards = 55
 
     with open("data_test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
         reader = csv.reader(rfh, delimiter=";", quotechar='"')
@@ -615,7 +618,10 @@ def data_parser():
             story_sentiment = 0
             title_sentiment = 0
             sub_title_sentiment = 0
-            num_of_rewards = 0
+            num_of_rewards = ()
+            len_of_rewards = ()
+            avg_rewards = 0
+            usd_funding_raised = 0
 
             if cols[0] != "" and cols[0] != "NULL":
                 url = 1
@@ -709,7 +715,7 @@ def data_parser():
                 length_story = 0
 
             if int(cols[18]) >= 0 and cols[18] != "NULL":
-                num_fb_shares = (int(cols[18]) / baseline_of_fb_shares)
+                num_fb_shares = int(cols[18])
             else:
                 num_fb_shares = 0
 
@@ -732,19 +738,30 @@ def data_parser():
                 sub_title_sentiment = 0
 
             if len(cols[22]) > 0:
-                print(str(cols[22]))
+                data = str(cols[22])
+                data = data[:2] + '"' + data[2:]
+                if data.endswith('"'):
+                    data = data[:-1]
+
+                try:
+                    json_data = json.loads(str(data))
+                except json.decoder.JSONDecodeError as e:
+                    continue
+
+                rewards = []
+                for iter in json_data:
+                    rewards.append(iter['minimum'])
+                    len_of_rewards = len_of_rewards + (len(json_data),)
+
+                num_of_rewards = int(len_of_rewards / baseline_of_max_num_rewards)
+                avg_rewards = int((sum(rewards) / len(rewards)) / baseline_of_max_rewards)
+
+
             else:
                 num_of_rewards = 0
 
-            data_row = [
-                str(url) + "," + str(image_url) + "," + str(title) + ','.join(map(str, location_country)) + ','.join(
-                    map(str, location_type)) + ',' + str(sub_title) + ',' + str(
-                    video_url) + ','.join(map(str, category)) + ','.join(map(str, category_slug)) + ','.join(
-                    map(str, currency)) + "," + str(funding_goal) + ',' + str(duration_of_campaign) + "," + str(
-                    num_supporters) + "," + str(num_updates) + "," + str(num_comments) + "," + str(
-                    length_story) + "," + str(num_fb_shares) + "," + str(story_sentiment.subjectivity) + "," + str(
-                    title_sentiment.subjectivity) + "," + str(sub_title_sentiment.subjectivity) + "," + str(
-                    campaign_state)]
+            if cols[23] != 0 or cols[23] !="NULL":
+                usd_funding_raised = int(cols[23])
 
             writer.writerow(
                 [
@@ -753,11 +770,14 @@ def data_parser():
                         map(str, location_type)) + ',' + str(sub_title) + ',' + str(
                         video_url) + ','.join(map(str, category)) + ','.join(map(str, category_slug)) + ','.join(
                         map(str, currency)) + "," + str(funding_goal) + ',' + str(duration_of_campaign) + "," + str(
-                        num_supporters) + "," + str(num_updates) + "," + str(num_comments) + "," + str(
-                        length_story) + "," + str(num_fb_shares) + "," + str(story_sentiment.subjectivity) + "," + str(
-                        title_sentiment.subjectivity) + "," + str(sub_title_sentiment.subjectivity) + "," + str(((story_sentiment.polarity + 1)/2)) + "," +
-                    str(((title_sentiment.polarity + 1)/ 2)) + "," + str(((sub_title_sentiment.polarity + 1) / 2)) + "," + str(
-                        campaign_state) ]
+                        num_updates) + "," + str(num_comments) + "," + str(
+                        length_story) + "," + str(story_sentiment.subjectivity) + "," + str(
+                        title_sentiment.subjectivity) + "," + str(sub_title_sentiment.subjectivity) + "," + str(
+                        ((story_sentiment.polarity + 1) / 2)) + "," +
+                    str(((title_sentiment.polarity + 1) / 2)) + "," + str(
+                        ((sub_title_sentiment.polarity + 1) / 2)) + "," + str(num_of_rewards) + ',' + str(
+                        avg_rewards) + "," + str(campaign_state) + ',' + str(num_fb_shares) + "," + str(
+                        num_supporters)]
 
             )
 
@@ -772,9 +792,10 @@ def data_parser():
             category_slug = ()
             currency = ()
             funding_goal = ()
-            duration_of_campaign = ()
+            currently_raised = ()
             campaign_state = ()
             num_supporters = ()
+            duration_of_campaign = ()
             num_updates = ()
             num_comments = ()
             length_story = ()
@@ -782,7 +803,10 @@ def data_parser():
             story_sentiment = 0
             title_sentiment = 0
             sub_title_sentiment = 0
-            num_of_rewards = 0
+            num_of_rewards = ()
+            avg_rewards = 0
+            usd_funding_raised = 0
+
             for k in category_dict:
                 category_dict[k] = 0
 
@@ -797,13 +821,6 @@ def data_parser():
 
             for k in currency_dict:
                 currency_dict[k] = 0
-
-
-def json_parser():
-    with open("json-data.csv", "r") as rf, open("machine_learning_data_kickstarter.csv", "a") as wf:
-        reader = csv.reader(rf, delimiter=",")
-        writer = csv.writer(wf, quoting=csv.QUOTE_NONE, escapechar=" ")
-        next(reader, None)
 
 
 data_parser()
