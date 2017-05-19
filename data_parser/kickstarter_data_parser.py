@@ -588,7 +588,7 @@ def data_parser():
     baseline_of_campaign_duration = 2717949
     baseline_of_currently_raised = 12393140
     baseline_of_max_rewards = 200000
-    baseline_of_max_num_rewards = 55
+    baseline_of_max_num_rewards = 68
 
     with open("data_test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
         reader = csv.reader(rfh, delimiter=";", quotechar='"')
