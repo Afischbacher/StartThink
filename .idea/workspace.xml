@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bced3cb9-49bf-4258-8dcc-99f02f1b314e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_parser/kickstarter_data_parser.py" afterPath="$PROJECT_DIR$/data_parser/kickstarter_data_parser.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start_think_neural_network_algorthim.py" afterPath="$PROJECT_DIR$/start_think_neural_network_algorthim.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
     </list>
     <ignored path="StartThink.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,8 +43,8 @@
       <file leaf-file-name="kickstarter_data_parser.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="787" column="17" selection-start-line="787" selection-start-column="17" selection-end-line="787" selection-end-column="17" />
+            <state relative-caret-position="34">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
               <folding>
                 <element signature="e#1474#1485#0" expanded="true" />
               </folding>
@@ -833,8 +831,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="787" column="17" selection-start-line="787" selection-start-column="17" selection-end-line="787" selection-end-column="17" />
+        <state relative-caret-position="34">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
           <folding>
             <element signature="e#1474#1485#0" expanded="true" />
           </folding>
