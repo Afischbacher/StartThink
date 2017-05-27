@@ -11,6 +11,8 @@ dataset = np.loadtxt("data_parser/machine_learning_data_kickstarter.csv", delimi
 X = dataset[:, 0:508]
 Y = dataset[:, 504:508]
 
+print(dataset[504:508])
+
 model = Sequential()
 model.add(Dense(508, input_dim=508, activation='relu'))
 model.add(Dense(254, input_dim=254, activation='relu'))

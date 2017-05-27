@@ -2,6 +2,7 @@
 data_parser query
 
 use crowdfund;
+
 SELECT url,
 image_url,
 length(title),
@@ -589,11 +590,15 @@ def data_parser():
     baseline_of_currently_raised = 12393140
     baseline_of_max_rewards = 200000
     baseline_of_max_num_rewards = 68
+    malformed_json = []
 
-    with open("data_test.csv", "r")as rfh, open("machine_learning_data_kickstarter.csv", "w+") as wfh:
+    with open("training_data.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+", encoding="utf8") as wfh:
+
         reader = csv.reader(rfh, delimiter=";", quotechar='"')
         writer = csv.writer(wfh, delimiter=",", quotechar=';', quoting=csv.QUOTE_NONE, escapechar=" ")
+
         next(reader, None)
+
         for cols in reader:
 
             url = ()
@@ -745,10 +750,13 @@ def data_parser():
 
                 try:
                     json_data = json.loads(str(data))
+
                 except json.decoder.JSONDecodeError as e:
+                    malformed_json.append(e.lineno)
                     continue
 
                 rewards = []
+
                 for iter in json_data:
                     rewards.append(iter['minimum'])
                     len_of_rewards = len_of_rewards + (len(json_data),)
@@ -764,18 +772,20 @@ def data_parser():
                 usd_funding_raised = float(cols[23])
 
             writer.writerow(
-              [float(url), float(image_url), float(title), ','.join(map(str, location_country)),
-                 ','.join(map(str, location_type)), float(sub_title), float(video_url),
-                 ','.join(map(str, category)), ','.join(map(str, category_slug)),
-                ','.join(map(str, currency)), float(funding_goal), float(duration_of_campaign),
-                 float(num_updates), float(num_comments), float(length_story), float(story_sentiment.subjectivity),
-                 float(title_sentiment.subjectivity), float(sub_title_sentiment.subjectivity), float(
+                [
+
+
+                    float(url), float(image_url), float(title), ','.join(map(str, location_country)),
+                    ','.join(map(str, location_type)), float(sub_title), float(video_url),
+                    ','.join(map(str, category)), ','.join(map(str, category_slug)),
+                    ','.join(map(str, currency)), float(funding_goal), float(duration_of_campaign),
+                    float(num_updates), float(num_comments), float(length_story), float(story_sentiment.subjectivity),
+                    float(title_sentiment.subjectivity), float(sub_title_sentiment.subjectivity), float(
                     ((story_sentiment.polarity + 1) / 2)), float(((title_sentiment.polarity + 1) / 2)), float(
                     ((sub_title_sentiment.polarity + 1) / 2)), float(num_of_rewards), float(
                     avg_rewards), float(campaign_state), float(num_fb_shares), float(
                     num_supporters), float(usd_funding_raised)
-
-                 ])
+                ])
 
             url = ()
             image_url = ()
@@ -817,16 +827,6 @@ def data_parser():
 
             for k in currency_dict:
                 currency_dict[k] = 0
-
-
-def convert_str_to_float():
-    with open("machine_learning_data_kickstarter.csv", "r") as str_file:
-        reader = csv.reader(str_file, delimiter=",", quoting=csv.QUOTE_NONNUMERIC)
-
-        row = list(reader)
-        for x in row:
-            for y in x:
-                print(type(y))
 
 
 data_parser()
