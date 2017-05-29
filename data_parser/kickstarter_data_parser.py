@@ -591,15 +591,16 @@ def data_parser():
     baseline_of_max_rewards = 200000
     baseline_of_max_num_rewards = 68
     malformed_json = []
+    rewards = []
 
-    with open("training_data.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+", encoding="utf8") as wfh:
+    with open("training_data.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+",
+                                                                     encoding="utf8") as wfh:
 
-        reader = csv.reader(rfh, delimiter=";", quotechar='"')
-        writer = csv.writer(wfh, delimiter=",", quotechar=';', quoting=csv.QUOTE_NONE, escapechar=" ")
-
-        next(reader, None)
+        reader = csv.reader(rfh, delimiter="~")
+        writer = csv.writer(wfh, delimiter=",", quotechar='"', quoting=csv.QUOTE_NONE, escapechar=" ")
 
         for cols in reader:
+
 
             url = ()
             image_url = ()
@@ -657,11 +658,13 @@ def data_parser():
 
             if len(cols[5]) > 0 and cols[5] != "NULL":
                 sub_title = (int(cols[5]) / int(baseline_sub_title))
+
             else:
                 sub_title = 0
 
             if cols[6] != "" and cols[6] != "NULL":
                 video_url = 1
+
             elif cols[6] == "NULL":
                 video_url = 0
 
@@ -730,7 +733,7 @@ def data_parser():
             else:
                 story_sentiment = 0
 
-            if len(cols[20]) > 0:
+            if len(cols[20]) > 0 or len(cols[20]):
                 title_sentiment = TextBlob(str(cols[20]))
 
             else:
@@ -751,41 +754,38 @@ def data_parser():
                 try:
                     json_data = json.loads(str(data))
 
+                    for iter in json_data:
+                        rewards.append(iter['minimum'])
+                        len_of_rewards = len_of_rewards + (len(json_data),)
+
+                    num_of_rewards = int(len(len_of_rewards) / baseline_of_max_num_rewards)
+                    avg_rewards = int((sum(rewards) / len(rewards)) / baseline_of_max_rewards)
+
                 except json.decoder.JSONDecodeError as e:
                     malformed_json.append(e.lineno)
-                    continue
+                    pass
 
-                rewards = []
-
-                for iter in json_data:
-                    rewards.append(iter['minimum'])
-                    len_of_rewards = len_of_rewards + (len(json_data),)
-
-                num_of_rewards = int(len(len_of_rewards) / baseline_of_max_num_rewards)
-                avg_rewards = int((sum(rewards) / len(rewards)) / baseline_of_max_rewards)
 
 
             else:
                 num_of_rewards = 0
 
             if cols[23] != 0 or cols[23] != "NULL":
+                print(cols[23])
                 usd_funding_raised = float(cols[23])
 
-            writer.writerow(
-                [
-
-
-                    float(url), float(image_url), float(title), ','.join(map(str, location_country)),
-                    ','.join(map(str, location_type)), float(sub_title), float(video_url),
-                    ','.join(map(str, category)), ','.join(map(str, category_slug)),
-                    ','.join(map(str, currency)), float(funding_goal), float(duration_of_campaign),
-                    float(num_updates), float(num_comments), float(length_story), float(story_sentiment.subjectivity),
-                    float(title_sentiment.subjectivity), float(sub_title_sentiment.subjectivity), float(
+            writer.writerow([
+                float(url), float(image_url), float(title), ','.join(map(str, location_country)),
+                ','.join(map(str, location_type)), float(sub_title), float(video_url),
+                ','.join(map(str, category)), ','.join(map(str, category_slug)),
+                ','.join(map(str, currency)), float(funding_goal), float(duration_of_campaign),
+                float(num_updates), float(num_comments), float(length_story), float(story_sentiment.subjectivity),
+                float(title_sentiment.subjectivity), float(sub_title_sentiment.subjectivity), float(
                     ((story_sentiment.polarity + 1) / 2)), float(((title_sentiment.polarity + 1) / 2)), float(
                     ((sub_title_sentiment.polarity + 1) / 2)), float(num_of_rewards), float(
                     avg_rewards), float(campaign_state), float(num_fb_shares), float(
                     num_supporters), float(usd_funding_raised)
-                ])
+            ])
 
             url = ()
             image_url = ()
@@ -834,4 +834,3 @@ data_parser()
 time_end = time.time()
 print("Done")
 print("Processing Time {0}".format(time_end - time_start))
-print()
