@@ -588,6 +588,7 @@ baseline_of_campaign_duration = 2717949
 baseline_of_currently_raised = 12393140
 baseline_of_max_rewards = 200000
 baseline_of_max_num_rewards = 68
+baseline_of_avg_rewards = (200000 / 68)
 malformed_json = []
 
 def data_parser():
@@ -622,11 +623,12 @@ def data_parser():
             story_sentiment = 0
             title_sentiment = 0
             sub_title_sentiment = 0
-            num_of_rewards = ()
+            num_of_rewards = 0
             len_of_rewards = ()
             avg_rewards = 0
             usd_funding_raised = 0
             num_of_rows = 0
+            rewards = []
 
             if cols[0] != "" and cols[0] != "NULL":
                 url = 1
@@ -751,25 +753,17 @@ def data_parser():
 
             if len(cols[22]) > 0:
                 data = str(cols[22])
-                data = data[:2] + '"' + data[2:]
-                if data.endswith('"'):
-                    data = data[:-1]
-
                 try:
-                    rewards = []
-                    json_data = json.loads(str(data))
+                    json_data = json.loads(data)
+
                     for iter in json_data:
                         rewards.append(iter['minimum'])
                         len_of_rewards = len_of_rewards + (len(json_data),)
-                        num_of_rewards = int(len(len_of_rewards) / baseline_of_max_num_rewards)
-                        avg_rewards = int((sum(rewards) / len(rewards)) / baseline_of_max_rewards)
+                        num_of_rewards = (len(len_of_rewards) / baseline_of_max_num_rewards)
+                        avg_rewards = (sum(rewards) / len(len_of_rewards)) /  baseline_of_avg_rewards
 
-
-                except json.decoder.JSONDecodeError as e:
-                    malformed_json.append(e.lineno)
-
-            else:
-                num_of_rewards = 0
+                except json.JSONDecodeError as e:
+                    malformed_json.append([e.msg, e.lineno, e.doc, e.colno])
 
             if cols[23] != 0 or cols[23] != "NULL":
                 usd_funding_raised = float(cols[23])
@@ -815,20 +809,22 @@ def data_parser():
             usd_funding_raised = 0
             num_of_rows = 0
 
-            for k in category_dict:
-                category_dict[k] = 0
+            for a in category_dict:
+                category_dict[a] = 0
 
-            for k in location_country:
-                location_country_dict[k] = 0
+            for b in location_country_dict:
+                location_country_dict[b] = 0
 
-            for k in location_type_dict:
-                location_type_dict[k] = 0
+            for c in location_type_dict:
+                location_type_dict[c] = 0
 
-            for k in category_slug_dict:
-                category_slug_dict[k] = 0
+            for d in category_slug_dict:
+                category_slug_dict[d] = 0
 
-            for k in currency_dict:
-                currency_dict[k] = 0
+            for e in currency_dict:
+                currency_dict[e] = 0
+
+
 
 data_parser()
 

@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bced3cb9-49bf-4258-8dcc-99f02f1b314e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_parser/data_parser.py" afterPath="$PROJECT_DIR$/data_parser/data_parser.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data_parser/kickstarter_data_parser.py" afterPath="$PROJECT_DIR$/data_parser/kickstarter_data_parser.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/start_think_neural_network_algorthim.py" afterPath="$PROJECT_DIR$/start_think_neural_network_algorthim.py" />
     </list>
     <ignored path="StartThink.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -19,9 +20,9 @@
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/StartThink$kickstarter_data_parser.coverage" NAME="kickstarter_data_parser Coverage Results" MODIFIED="1496094863815" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
     <SUITE FILE_PATH="coverage/StartThink$test_text_blob.coverage" NAME="test_text_blob Coverage Results" MODIFIED="1494892987316" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
-    <SUITE FILE_PATH="coverage/StartThink$data_parser.coverage" NAME="data_parser Coverage Results" MODIFIED="1496100611732" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
-    <SUITE FILE_PATH="coverage/StartThink$start_think_neural_network_algorthim.coverage" NAME="start_think_neural_network_algorthim Coverage Results" MODIFIED="1495813525090" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/StartThink$json_value_parsing.coverage" NAME="json_value_parsing Coverage Results" MODIFIED="1495156341431" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
+    <SUITE FILE_PATH="coverage/StartThink$data_parser.coverage" NAME="data_parser Coverage Results" MODIFIED="1496182979129" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
+    <SUITE FILE_PATH="coverage/StartThink$start_think_neural_network_algorthim.coverage" NAME="start_think_neural_network_algorthim Coverage Results" MODIFIED="1496183911285" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/StartThink$json_value_parsing.coverage" NAME="json_value_parsing Coverage Results" MODIFIED="1496183379018" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/data_parser" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -39,11 +40,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="kickstarter_data_parser.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
+      <file leaf-file-name="data_parser.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_parser/data_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="815" column="14" selection-start-line="815" selection-start-column="7" selection-end-line="828" selection-end-column="36" />
+            <state relative-caret-position="2431">
+              <caret line="770" column="0" selection-start-line="770" selection-start-column="0" selection-end-line="770" selection-end-column="0" />
               <folding>
                 <element signature="e#1474#1485#0" expanded="true" />
               </folding>
@@ -51,24 +52,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test-diabetes-data.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data_parser/test-diabetes-data.csv">
+      <file leaf-file-name="json_value_parsing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data_parser/json_value_parsing.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="695" column="1" selection-start-line="695" selection-start-column="0" selection-end-line="695" selection-end-column="1" />
+            <state relative-caret-position="510">
+              <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="data_parser.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/data_parser/data_parser.py">
+      <file leaf-file-name="start_think_neural_network_algorthim.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/start_think_neural_network_algorthim.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="837" column="21" selection-start-line="837" selection-start-column="21" selection-end-line="837" selection-end-column="21" />
-              <folding>
-                <element signature="e#1474#1485#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="340">
+              <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -96,12 +95,12 @@
         <option value="$PROJECT_DIR$/data_parser/test_text_blob.py" />
         <option value="$PROJECT_DIR$/data_parser/structured_data.csv" />
         <option value="$PROJECT_DIR$/data_parser/data_test.csv" />
-        <option value="$PROJECT_DIR$/data_parser/json_value_parsing.py" />
         <option value="$PROJECT_DIR$/data_parser/machine_learning_data_kickstarter.csv" />
-        <option value="$PROJECT_DIR$/start_think_neural_network_algorthim.py" />
-        <option value="$PROJECT_DIR$/data_parser/machine_learning_data.csv" />
         <option value="$PROJECT_DIR$/data_parser/kickstarter_data_parser.py" />
+        <option value="$PROJECT_DIR$/data_parser/machine_learning_data.csv" />
         <option value="$PROJECT_DIR$/data_parser/data_parser.py" />
+        <option value="$PROJECT_DIR$/data_parser/json_value_parsing.py" />
+        <option value="$PROJECT_DIR$/start_think_neural_network_algorthim.py" />
       </list>
     </option>
   </component>
@@ -200,7 +199,7 @@
       <recent name="C:\Projects\StartThink\data_parser" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.data_parser">
+  <component name="RunManager" selected="Python.start_think_neural_network_algorthim">
     <configuration default="false" name="kickstarter_data_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -508,10 +507,10 @@
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.data_parser" />
-        <item index="1" class="java.lang.String" itemvalue="Python.kickstarter_data_parser" />
-        <item index="2" class="java.lang.String" itemvalue="Python.start_think_neural_network_algorthim" />
-        <item index="3" class="java.lang.String" itemvalue="Python.json_value_parsing" />
+        <item index="0" class="java.lang.String" itemvalue="Python.start_think_neural_network_algorthim" />
+        <item index="1" class="java.lang.String" itemvalue="Python.json_value_parsing" />
+        <item index="2" class="java.lang.String" itemvalue="Python.data_parser" />
+        <item index="3" class="java.lang.String" itemvalue="Python.kickstarter_data_parser" />
         <item index="4" class="java.lang.String" itemvalue="Python.test_text_blob" />
       </list>
     </recent_temporary>
@@ -538,12 +537,12 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16826923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25135428" sideWeight="0.50213677" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24160346" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29685807" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25135428" sideWeight="0.49786323" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936078" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -574,13 +573,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/start_think_neural_network_algorthim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95676">
@@ -663,13 +655,6 @@
     <entry file="file://$PROJECT_DIR$/data_parser/test.csv" />
     <entry file="file://$PROJECT_DIR$/data_parser/new_data.csv" />
     <entry file="file://$PROJECT_DIR$/data_parser/test_data.csv" />
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/lib/npyio.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="981" column="0" selection-start-line="981" selection-start-column="0" selection-end-line="981" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/test_file.csv" />
     <entry file="file://$PROJECT_DIR$/data_parser/data-test-2.csv" />
     <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data.csv" />
@@ -721,13 +706,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parser/json_value_parsing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="28" selection-start-line="32" selection-start-column="28" selection-end-line="32" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/data_test.csv" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -766,25 +744,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/start_think_neural_network_algorthim.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="41" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/training_data_test.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70295">
           <caret line="86" column="790" selection-start-line="86" selection-start-column="790" selection-end-line="86" selection-end-column="790" />
           <folding />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data_parser/training_data.csv">
-      <provider selected="true" editor-type-id="LargeFileEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/textblob/en/sentiments.py">
@@ -803,6 +768,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="691">
+          <caret line="830" column="0" selection-start-line="830" selection-start-column="0" selection-end-line="830" selection-end-column="0" />
+          <folding>
+            <element signature="e#1474#1485#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/compat/py3k.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/numpy/lib/npyio.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="918" column="0" selection-start-line="918" selection-start-column="0" selection-end-line="918" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data_parser/training_data.csv">
+      <provider selected="true" editor-type-id="LargeFileEditor">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/test-diabetes-data.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -812,33 +808,39 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/machine_learning_data.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="46397" column="0" selection-start-line="46397" selection-start-column="0" selection-end-line="46397" selection-end-column="0" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="10421">
+          <caret line="662" column="0" selection-start-line="662" selection-start-column="0" selection-end-line="662" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider selected="true" editor-type-id="LargeFileEditor">
+      <provider editor-type-id="LargeFileEditor">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data_parser/kickstarter_data_parser.py">
+    <entry file="file://$PROJECT_DIR$/data_parser/json_value_parsing.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="815" column="14" selection-start-line="815" selection-start-column="7" selection-end-line="828" selection-end-column="36" />
-          <folding>
-            <element signature="e#1474#1485#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="510">
+          <caret line="31" column="92" selection-start-line="31" selection-start-column="92" selection-end-line="31" selection-end-column="92" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data_parser/data_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="837" column="21" selection-start-line="837" selection-start-column="21" selection-end-line="837" selection-end-column="21" />
+        <state relative-caret-position="2431">
+          <caret line="770" column="0" selection-start-line="770" selection-start-column="0" selection-end-line="770" selection-end-column="0" />
           <folding>
             <element signature="e#1474#1485#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/start_think_neural_network_algorthim.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="22" column="26" selection-start-line="22" selection-start-column="26" selection-end-line="22" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

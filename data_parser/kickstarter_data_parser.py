@@ -816,7 +816,7 @@ def data_parser():
             for k in category_dict:
                 category_dict[k] = 0
 
-            for k in location_country:
+            for k in location_country_dict:
                 location_country_dict[k] = 0
 
             for k in location_type_dict:
