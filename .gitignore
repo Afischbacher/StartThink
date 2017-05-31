@@ -10,3 +10,6 @@ data_parser/JSON_data.csv
 data_parser/json_value_parsing.py
 data_parser/machine_learning_data.csv
 data_parser/training_data.csv
+model_weights/
+data_parser/machine_testing_data.csv
+data_parser/testing_data.csv
