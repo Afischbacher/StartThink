@@ -777,8 +777,7 @@ def data_parser():
                 title_sentiment.subjectivity, sub_title_sentiment.subjectivity,
                 ((story_sentiment.polarity + 1) / 2), ((title_sentiment.polarity + 1) / 2),
                 ((sub_title_sentiment.polarity + 1) / 2), num_of_rewards,
-                avg_rewards, campaign_state, num_fb_shares,
-                num_supporters, usd_funding_raised
+                avg_rewards, campaign_state
             ])
 
             url = ()

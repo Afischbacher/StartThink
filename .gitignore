@@ -13,3 +13,7 @@ data_parser/training_data.csv
 model_weights/
 data_parser/machine_testing_data.csv
 data_parser/testing_data.csv
+testing/actual_data.csv
+testing/predicted_data.csv
+training/machine_learning_data.csv
+testing/machine_testing_data.csv
