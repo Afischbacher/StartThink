@@ -1,5 +1,6 @@
 from keras.models import Sequential
 from keras.layers import Dense
+from keras.models import load_model
 import numpy as np
 
 
@@ -23,6 +24,5 @@ def train_data_on_neural_network():
     scores = model.evaluate(X, Y)
     print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1] * 100))
     model.save("C:\Projects\StartThink\model_weights\\start_think_weights_20000_100.h5")
-
 
 train_data_on_neural_network()

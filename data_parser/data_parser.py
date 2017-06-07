@@ -591,8 +591,8 @@ baseline_of_max_num_rewards = 68
 baseline_of_avg_rewards = (200000 / 68)
 malformed_json = []
 
-def data_parser():
 
+def data_parser():
     with open("training_data.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+",
                                                                      encoding="utf8") as wfh:
 
@@ -760,7 +760,7 @@ def data_parser():
                         rewards.append(iter['minimum'])
                         len_of_rewards = len_of_rewards + (len(json_data),)
                         num_of_rewards = (len(len_of_rewards) / baseline_of_max_num_rewards)
-                        avg_rewards = (sum(rewards) / len(len_of_rewards)) /  baseline_of_avg_rewards
+                        avg_rewards = (sum(rewards) / len(len_of_rewards)) / baseline_of_avg_rewards
 
                 except json.JSONDecodeError as e:
                     malformed_json.append([e.msg, e.lineno, e.doc, e.colno])
@@ -822,7 +822,6 @@ def data_parser():
 
             for e in currency_dict:
                 currency_dict[e] = 0
-
 
 
 data_parser()
