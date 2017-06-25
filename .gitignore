@@ -17,3 +17,11 @@ testing/actual_data.csv
 testing/predicted_data.csv
 training/machine_learning_data.csv
 testing/machine_testing_data.csv
+data_parser/training_data_full.csv
+testing/Test 2017-06-03/actual_data_2017_06_03.csv
+testing/Test 2017-06-03/predicted_data_2017_06_03.csv
+testing/Test 2017-06-03/machine_testing_data_2017_06_03.csv
+testing/Test 2017-06-16/machine_testing_data_2017_06_16.csv
+testing/Test 2017-06-16/actual_data_2017_06_16.csv
+training/machine_learning_data_2017-06-03.csv
+training/machine_learning_data_2017-06-14.csv

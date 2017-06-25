@@ -9,7 +9,7 @@ def train_data_on_neural_network():
     np.random.seed(7)
 
     # loading dataset
-    dataset = np.loadtxt("machine_learning_data.csv", delimiter=",", dtype=float)
+    dataset = np.loadtxt("machine_learning_data_2017-06-14.csv", delimiter=",", dtype=float)
     # split into input (X) and output (Y) variables
     X = dataset[:,0:510]
     Y = dataset[:,510]
@@ -20,9 +20,9 @@ def train_data_on_neural_network():
 
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
     print("Fitting Model")
-    model.fit(X, Y, epochs=20000, batch_size=100)
+    model.fit(X, Y, epochs=25000, batch_size=100)
     scores = model.evaluate(X, Y)
     print("\n%s: %.2f%%" % (model.metrics_names[1], scores[1] * 100))
-    model.save("C:\Projects\StartThink\model_weights\\start_think_weights_20000_100.h5")
+    model.save("C:\Projects\StartThink\model_weights\\start_think_weights_25000_100.h5")
 
 train_data_on_neural_network()

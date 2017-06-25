@@ -593,7 +593,7 @@ malformed_json = []
 
 
 def data_parser():
-    with open("training_data.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+",
+    with open("training_data_full.csv", "r", encoding="utf8")as rfh, open("machine_learning_data.csv", "w+",
                                                                      encoding="utf8") as wfh:
 
         reader = csv.reader(rfh, delimiter="~")
