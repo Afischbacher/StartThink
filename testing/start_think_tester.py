@@ -25,7 +25,18 @@ def test_data():
         for x in reader:
             actual_data.append(float(x[510]))  # append the data
 
-    print((len([i for i, j in zip(predicted_data, actual_data) if i == j]) / len(predicted_data)))
+    total_success = 0
+    common_values = []
+    for i in range(len(actual_data)):
+        if int(actual_data[i]) == int(predicted_data[i]):
+            common_values.append(1)
+        else:
+            common_values.append(0)
 
+    for j in range(len(common_values)):
+        if common_values[j] == 1:
+            total_success = total_success + 1
+
+    print( total_success / len(predicted_data))
 
 test_data()

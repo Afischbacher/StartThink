@@ -29,7 +29,7 @@ REPLACE(rewards,";", ""),
 usd_currently_raised
 FROM training_data
 WHERE state = "successful" OR state = "failed"
-ORDER BY launch_date DESC
+ORDER BY launch_date DESC   
 LIMIT 23200;
 
 
